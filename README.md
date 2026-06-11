@@ -65,6 +65,22 @@ Open:
 http://127.0.0.1:5174
 ```
 
+## Python Backend Structure
+
+The Python backend is split by responsibility:
+
+```text
+server_python/app.py                 Server entry point
+server_python/carevault/__init__.py  Flask app factory
+server_python/carevault/config.py    Environment variables and paths
+server_python/carevault/routes.py    API routes and frontend serving
+server_python/carevault/storage.py   JSON backups and file uploads
+server_python/carevault/database.py  SQL Server connection and inserts
+server_python/carevault/mail.py      SMTP email notifications
+server_python/carevault/validation.py Form validation helpers
+server_python/carevault/responses.py API response helpers
+```
+
 ## Optional Node Backend
 
 The original Express backend is still available:
