@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "api": "node server/server.js",
+    "api:py": "python server_python/app.py",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "serve": "npm run build && node server/server.js"
+    "serve": "npm run build && node server/server.js",
+    "serve:py": "npm run build && python server_python/app.py"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",

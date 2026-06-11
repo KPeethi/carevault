@@ -2,7 +2,11 @@ node_modules
 dist
 .env
 .env.local
+.venv
+__pycache__
+*.pyc
 npm-debug.log*
 vite-dev.*.log
 api-server.*.log
+python-server.*.log
 submissions
