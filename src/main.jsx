@@ -40,51 +40,103 @@ const navItems = [
   { label: "Contact", path: "contact" },
 ];
 
-const services = [
-  { title: "Physical records storage", icon: Archive, text: "Managed paper chart storage with organized intake, inventory, and retrieval workflows." },
-  { title: "Medical record scanning and digitization", icon: ScanLine, text: "Convert legacy charts into structured digital files with quality checks." },
-  { title: "OCR and searchable PDF creation", icon: FileSearch, text: "Create searchable files that help teams locate critical chart data quickly." },
-  { title: "Patient chart indexing", icon: ClipboardCheck, text: "Index by patient, provider, document type, date, and request category." },
-  { title: "Patient record request handling", icon: UserCheck, text: "Support authorized release workflows from intake through secure delivery." },
-  { title: "Secure record delivery", icon: FileLock2, text: "Deliver by encrypted transfer, mail, pickup, or approved courier." },
-  { title: "EMR/EHR data extraction", icon: DatabaseZap, text: "Extract patient demographics, documents, billing artifacts, and chart metadata." },
-  { title: "Data cleaning and normalization", icon: FileCheck2, text: "Standardize names, dates, document types, and export fields for migration use." },
-  { title: "Legacy system migration support", icon: FolderClock, text: "Prepare legacy data and documents for handoff into modern healthcare systems." },
-  { title: "Practice closure and retirement support", icon: Stethoscope, text: "Help providers wind down record operations with clear retention tracking." },
-  { title: "Secure destruction when legally permitted", icon: Trash2, text: "Coordinate documented destruction only when policy and legal review allow it." },
+const serviceCategories = [
+  {
+    title: "Healthcare Data Management",
+    icon: DatabaseZap,
+    text: "Organize legacy exports, structured patient data, and migration-ready datasets for provider teams.",
+    services: [
+      { title: "EMR/EHR migration support", icon: DatabaseZap, text: "Prepare records, documents, and structured data for movement into new EMR and EHR systems." },
+      { title: "Legacy system data extraction", icon: FolderClock, text: "Extract patient demographics, documents, indexes, and chart metadata from older healthcare systems." },
+      { title: "Data cleaning and normalization", icon: FileCheck2, text: "Standardize names, dates, document types, and export fields before migration or archival use." },
+      { title: "Database export organization", icon: Archive, text: "Structure exports from clinical systems into usable folders, reports, and review-ready datasets." },
+      { title: "Structured patient data mapping", icon: ClipboardCheck, text: "Map patient records, identifiers, documents, and metadata into consistent migration references." },
+    ],
+  },
+  {
+    title: "Medical Records Digitization",
+    icon: ScanLine,
+    text: "Convert paper records and chart archives into searchable, organized digital record collections.",
+    services: [
+      { title: "Paper record scanning", icon: ScanLine, text: "Digitize paper charts with organized intake, batching, and quality review workflows." },
+      { title: "OCR and searchable PDFs", icon: FileSearch, text: "Create searchable PDFs so teams can locate clinical record content more efficiently." },
+      { title: "Patient chart indexing", icon: ClipboardCheck, text: "Index charts by patient, provider, date, document type, and operational category." },
+      { title: "Digital archive creation", icon: FileLock2, text: "Build organized digital archives for long-term access, retention tracking, and handoff." },
+      { title: "Metadata tagging", icon: FileCheck2, text: "Tag documents and datasets with practical metadata for retrieval and migration support." },
+    ],
+  },
+  {
+    title: "Practice Transition Support",
+    icon: Stethoscope,
+    text: "Support healthcare organizations during retirement, closure, provider changes, and system transitions.",
+    services: [
+      { title: "Physician retirement support", icon: Stethoscope, text: "Help retiring physicians organize active, inactive, and retained patient record obligations." },
+      { title: "Practice closure record organization", icon: Building2, text: "Prepare closed-practice records for preservation, requests, legal review, and secure disposition planning." },
+      { title: "Provider transition support", icon: UserCheck, text: "Support handoff planning when providers, ownership, or record responsibilities change." },
+      { title: "Records handoff planning", icon: Landmark, text: "Document what exists, where it belongs, and how it should be accessed or transferred." },
+      { title: "Long-term preservation workflows", icon: FolderClock, text: "Create practical retention and preservation workflows for legacy paper and digital records." },
+    ],
+  },
+  {
+    title: "Records Request Handling",
+    icon: UserCheck,
+    text: "Manage request intake, authorization collection, verification, and controlled record delivery.",
+    services: [
+      { title: "Patient record request intake", icon: UserCheck, text: "Collect request details needed for authorized medical record release workflows." },
+      { title: "Authorization document collection", icon: Upload, text: "Collect authorization documents for review before any third-party release." },
+      { title: "Identity and consent verification", icon: KeyRound, text: "Support verification steps before records are released through approved channels." },
+      { title: "Secure delivery through approved methods", icon: FileLock2, text: "Coordinate delivery through secure digital transfer, mail, pickup, or approved courier workflows." },
+      { title: "Request tracking and documentation", icon: ClipboardCheck, text: "Keep request status, supporting documents, and delivery notes organized for operational review." },
+    ],
+  },
+  {
+    title: "Secure Storage & Preservation",
+    icon: ShieldCheck,
+    text: "Preserve paper and digital records with retention-aware, audit-ready organization.",
+    services: [
+      { title: "Physical records storage coordination", icon: Archive, text: "Coordinate physical chart storage with inventory, indexing, and retrieval planning." },
+      { title: "Digital records preservation", icon: FileLock2, text: "Preserve digital records, exports, and scanned archives in structured record collections." },
+      { title: "Retention tracking", icon: FolderClock, text: "Track retention requirements with healthcare providers and legal advisors." },
+      { title: "Secure destruction when legally permitted", icon: Trash2, text: "Coordinate documented destruction only when policy and legal review allow it." },
+      { title: "Audit-ready record organization", icon: ClipboardCheck, text: "Maintain organized record inventories and metadata for review, handoff, and retrieval." },
+    ],
+  },
 ];
 
+const services = serviceCategories.flatMap((category) => category.services);
+
 const processSteps = [
-  "Consultation",
+  "Consultation and lifecycle planning",
   "Records pickup or secure data transfer",
-  "Inventory and indexing",
-  "Scanning/OCR if needed",
-  "Secure storage",
-  "Request handling",
-  "Retention tracking and destruction when allowed",
+  "Inventory, export review, and data assessment",
+  "Scanning, OCR, extraction, and indexing",
+  "Data cleaning, mapping, and archive organization",
+  "Secure storage, preservation, and migration support",
+  "Request handling, retention tracking, and destruction when allowed",
 ];
 
 const audiences = [
-  { title: "Private clinics", icon: HeartPulse },
-  { title: "Retiring doctors", icon: Stethoscope },
-  { title: "Small hospitals", icon: Hospital },
+  { title: "Clinics", icon: HeartPulse },
+  { title: "Specialty practices", icon: ClipboardCheck },
   { title: "Dental clinics", icon: FileCheck2 },
   { title: "Diagnostic centers", icon: ScanLine },
-  { title: "Specialty practices", icon: ClipboardCheck },
+  { title: "Small hospitals", icon: Hospital },
   { title: "Healthcare administrators", icon: Building2 },
-  { title: "Legal representatives of closed practices", icon: Landmark },
+  { title: "Retiring physicians", icon: Stethoscope },
+  { title: "Practices changing EMR systems", icon: DatabaseZap },
+  { title: "Practices with legacy healthcare data", icon: FolderClock },
 ];
 
 const securityItems = [
-  "Patient confidentiality",
-  "HIPAA-aware handling for applicable records",
-  "Access control",
-  "Audit logs",
-  "Secure storage",
-  "Encrypted digital transfer",
-  "Identity verification before release",
-  "Written authorization required for third-party requests",
-  "Compliance-first workflows",
+  "Privacy-first workflows",
+  "Compliance-focused processes",
+  "HIPAA-aware records handling",
+  "Secure access controls",
+  "Authorization-based release",
+  "Identity and consent verification",
+  "Encrypted digital transfer options",
+  "Audit-ready organization",
+  "Retention and privacy requirement planning",
 ];
 
 function getInitialRoute() {
@@ -221,17 +273,17 @@ function Hero() {
             Protecting Patient Records, Preserving Trust.
           </div>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Secure Medical Records Management for Clinics and Healthcare Providers
+            Healthcare Data Management & Medical Records Preservation
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-blue-50">
-            We help healthcare providers store, digitize, index, retrieve, and manage patient records with care and confidentiality.
+            CareVault helps healthcare providers organize, digitize, migrate, preserve, and manage patient records securely throughout the entire records lifecycle.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-brand-900 shadow-soft transition hover:bg-blue-50">
               Request a Consultation <ArrowRight size={18} />
             </a>
-            <a href="#/request-records" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/35 bg-white/12 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20">
-              Submit a Records Request <FileCheck2 size={18} />
+            <a href="#/services" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/35 bg-white/12 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20">
+              Explore Services <FileCheck2 size={18} />
             </a>
           </div>
         </div>
@@ -244,12 +296,12 @@ function ServicesOverview() {
   return (
     <Section
       eyebrow="Services overview"
-      title="Records operations for paper charts, digital archives, and legacy exports"
-      text="CareVault supports the operational work around older patient records so clinical teams can focus on care, continuity, and proper release workflows."
+      title="Healthcare data services across the full records lifecycle"
+      text="CareVault is a healthcare data management platform focused on EMR migration, medical records digitization, OCR indexing, data extraction, practice transition support, and long-term records preservation for healthcare providers."
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {services.slice(0, 6).map((service) => (
-          <ServiceCard key={service.title} service={service} />
+        {serviceCategories.slice(0, 3).map((category) => (
+          <ServiceCategoryCard key={category.title} category={category} />
         ))}
       </div>
       <div className="mt-8">
@@ -263,24 +315,26 @@ function ServicesOverview() {
 
 function WhyChooseUs() {
   const items = [
-    { title: "Healthcare-specific workflows", text: "Built around patient charts, request authorization, retention tracking, and clinic handoff needs.", icon: HeartPulse },
-    { title: "Secure by default", text: "Controlled access, careful release checks, and encrypted delivery options are part of the operating model.", icon: ShieldCheck },
-    { title: "Practical data support", text: "Indexing, OCR, extraction, cleaning, and migration preparation help make older records usable again.", icon: DatabaseZap },
+    { title: "Healthcare records and data expertise", text: "Support for paper charts, digital archives, database exports, patient indexes, and legacy healthcare datasets.", icon: HeartPulse },
+    { title: "EMR migration-focused approach", text: "Organize, map, clean, and prepare record data so providers can move from older systems with less operational friction.", icon: DatabaseZap },
+    { title: "Records lifecycle management", text: "Plan intake, digitization, preservation, request handling, retention tracking, and secure disposition as one connected workflow.", icon: FolderClock },
+    { title: "Secure request handling", text: "Support authorization-based release, identity checks, request documentation, and approved delivery methods.", icon: ShieldCheck },
+    { title: "Practical support for legacy systems and practice transitions", text: "Help retiring physicians, closing practices, and teams changing EMRs preserve usable records and reduce transition risk.", icon: Stethoscope },
   ];
 
   return (
     <section className="bg-white py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">Why choose us</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">Why CareVault</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            Confidential, organized, and built for healthcare record realities
+            Built for healthcare data, records preservation, and practice change
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            We combine records management discipline with medical data services, giving providers a clear path from boxed charts and legacy exports to searchable, managed, and request-ready archives.
+            CareVault combines records management discipline with practical data services, helping healthcare teams move from boxed charts, scanned files, and legacy exports to searchable, organized, migration-ready archives.
           </p>
         </div>
-        <div className="grid gap-4">
+        <div className="grid gap-4 lg:grid-cols-2">
           {items.map((item) => (
             <FeatureRow key={item.title} item={item} />
           ))}
@@ -297,8 +351,11 @@ function ProcessPreview() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-brand-700">How the process works</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            A controlled path from intake to secure retrieval
+            A controlled path from legacy records to usable, preserved healthcare data
           </h2>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            We start by understanding the records lifecycle, then organize paper files, digital exports, indexes, and request workflows around the provider's operational and retention needs.
+          </p>
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {processSteps.slice(0, 4).map((step, index) => (
@@ -312,7 +369,7 @@ function ProcessPreview() {
 
 function ContactBand() {
   return (
-    <Section eyebrow="Start a conversation" title="Tell us what records you need to manage" text="Use the form below for consultations, storage questions, digitization planning, or migration support. Submissions are sent to the CareVault request system.">
+    <Section eyebrow="Start a conversation" title="Tell us what healthcare records or data you need to manage" text="Use the form below for EMR migration planning, digitization, OCR indexing, legacy data extraction, practice transition support, storage, preservation, or request handling.">
       <ContactForm compact />
     </Section>
   );
@@ -320,10 +377,10 @@ function ContactBand() {
 
 function ServicesPage() {
   return (
-    <PageShell eyebrow="Services" title="Medical records management and data services" text="Support for physical archives, digitization, chart indexing, patient request handling, secure delivery, and migration preparation.">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <ServiceCard key={service.title} service={service} />
+    <PageShell eyebrow="Services" title="Healthcare data management, digitization, migration, and preservation" text="CareVault supports the complete records lifecycle, including legacy system data extraction, EMR/EHR migration support, OCR indexing, digital archive creation, request handling, and long-term preservation.">
+      <div className="grid gap-8">
+        {serviceCategories.map((category) => (
+          <ServiceCategorySection key={category.title} category={category} />
         ))}
       </div>
       <CTAStrip />
@@ -333,7 +390,7 @@ function ServicesPage() {
 
 function HowItWorksPage() {
   return (
-    <PageShell eyebrow="How it works" title="A clear operating model for secure record programs" text="Each engagement starts with scope, authorization, and retention requirements, then moves through inventory, indexing, secure storage, and request handling.">
+    <PageShell eyebrow="How it works" title="A lifecycle workflow for healthcare records and legacy data" text="Each engagement starts with scope, system context, record formats, authorization needs, and retention requirements, then moves through inventory, digitization, data extraction, mapping, preservation, migration support, and request handling.">
       <div className="grid gap-4 md:grid-cols-2">
         {processSteps.map((step, index) => (
           <StepCard key={step} index={index + 1} title={step} wide />
@@ -345,7 +402,7 @@ function HowItWorksPage() {
 
 function WhoWeHelpPage() {
   return (
-    <PageShell eyebrow="Who we help" title="Support for providers, administrators, and practice transitions" text="CareVault is built for healthcare organizations that need practical, secure support for older records and operational requests.">
+    <PageShell eyebrow="Who we help" title="Support for healthcare teams with records, data, and transition needs" text="CareVault helps clinics, specialty practices, diagnostic centers, hospitals, administrators, retiring physicians, and practices changing EMR systems organize and preserve medical records and legacy healthcare data.">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {audiences.map((audience) => {
           const Icon = audience.icon;
@@ -365,7 +422,7 @@ function WhoWeHelpPage() {
 
 function SecurityPage() {
   return (
-    <PageShell eyebrow="Compliance & Security" title="Compliance-first workflows for confidential medical records" text="Records release and retention work requires careful controls, including HIPAA-aware handling where applicable. We do not claim legal certification unless it is verified.">
+    <PageShell eyebrow="Compliance & Security" title="Privacy-first workflows for healthcare records and data" text="CareVault uses careful, compliance-focused processes for confidential records, data exports, request handling, and preservation workflows. We do not claim legal certification, HIPAA certification, or DPDP certification.">
       <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr]">
         <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex items-center gap-3">
@@ -373,8 +430,8 @@ function SecurityPage() {
               <ShieldCheck size={24} />
             </span>
             <div>
-              <h2 className="text-xl font-semibold text-slate-950">Security controls</h2>
-              <p className="text-sm text-slate-600">Designed for confidential healthcare record operations.</p>
+              <h2 className="text-xl font-semibold text-slate-950">Security and privacy controls</h2>
+              <p className="text-sm text-slate-600">Designed for healthcare records, legacy data, and authorization-based release workflows.</p>
             </div>
           </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -390,13 +447,13 @@ function SecurityPage() {
           <KeyRound size={30} />
           <h2 className="mt-5 text-2xl font-semibold">Retention and privacy note</h2>
           <p className="mt-4 leading-7 text-blue-50">
-            We work with healthcare providers and legal advisors to follow applicable record retention and privacy requirements, including HIPAA-aware workflows where relevant.
+            We work with healthcare providers and legal advisors to follow applicable record retention and privacy requirements.
           </p>
           <p className="mt-4 leading-7 text-blue-100">
-            Third-party requests require written authorization, identity verification, and a controlled release process before records are delivered.
+            Records release workflows should be authorization-based, with identity and consent verification before records are delivered through approved methods.
           </p>
           <p className="mt-4 leading-7 text-blue-100">
-            Production deployments should use HTTPS, authenticated internal access, encrypted backups, and restricted server storage before real patient data is collected.
+            Production deployments should use HTTPS, secure access controls, encrypted transfer options, protected storage, and reviewed operating policies before real patient data is collected.
           </p>
         </div>
       </div>
@@ -414,14 +471,14 @@ function RequestRecordsPage() {
 
 function ContactPage() {
   return (
-    <PageShell eyebrow="Contact" title="Talk with CareVault" text="Send a consultation request for storage, scanning, indexing, request handling, data cleaning, or migration planning.">
+    <PageShell eyebrow="Contact" title="Talk with CareVault" text="Send a consultation request for healthcare data management, EMR migration support, digitization, OCR indexing, data extraction, practice transition support, preservation, or records request handling.">
       <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="rounded-lg bg-brand-900 p-6 text-white shadow-soft">
           <h2 className="text-2xl font-semibold">Contact details</h2>
           <div className="mt-6 grid gap-4 text-sm text-blue-50">
             <ContactLine icon={Mail} text="kulkarni.preethi99@gmail.com" />
             <ContactLine icon={Phone} text="8008065545" />
-            <ContactLine icon={MapPin} text="India-based healthcare records support" />
+            <ContactLine icon={MapPin} text="India-based healthcare data and records support" />
           </div>
         </div>
         <ContactForm />
@@ -475,6 +532,49 @@ function ServiceCard({ service }) {
   );
 }
 
+function ServiceCategoryCard({ category }) {
+  const Icon = category.icon;
+  return (
+    <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-soft">
+      <span className="grid h-11 w-11 place-items-center rounded-lg bg-brand-50 text-brand-700">
+        <Icon size={22} />
+      </span>
+      <h3 className="mt-4 text-lg font-semibold text-slate-950">{category.title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{category.text}</p>
+      <ul className="mt-4 space-y-2 text-sm font-medium text-slate-700">
+        {category.services.slice(0, 3).map((service) => (
+          <li key={service.title} className="flex gap-2">
+            <CheckCircle2 className="mt-0.5 shrink-0 text-teal-600" size={16} />
+            <span>{service.title}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function ServiceCategorySection({ category }) {
+  const Icon = category.icon;
+  return (
+    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="mb-5 flex gap-4">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-brand-700 text-white">
+          <Icon size={24} />
+        </span>
+        <div>
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-950">{category.title}</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">{category.text}</p>
+        </div>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {category.services.map((service) => (
+          <ServiceCard key={service.title} service={service} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function FeatureRow({ item }) {
   const Icon = item.icon;
   return (
@@ -498,7 +598,7 @@ function StepCard({ index, title, wide = false }) {
       </span>
       <h3 className="mt-5 text-lg font-semibold text-slate-950">{title}</h3>
       <p className="mt-2 text-sm leading-6 text-slate-600">
-        Controlled documentation, assigned ownership, and secure handling at every step.
+        Controlled documentation, clear ownership, and secure handling at every stage of the records lifecycle.
       </p>
     </div>
   );
@@ -508,15 +608,15 @@ function CTAStrip() {
   return (
     <div className="mt-12 rounded-lg bg-brand-900 p-6 text-white shadow-soft sm:flex sm:items-center sm:justify-between sm:gap-8">
       <div>
-        <h2 className="text-2xl font-semibold">Need a secure records plan?</h2>
-        <p className="mt-2 text-blue-50">Start with a consultation or submit a records request for review.</p>
+        <h2 className="text-2xl font-semibold">Need a records lifecycle or migration plan?</h2>
+        <p className="mt-2 text-blue-50">Start with a consultation for digitization, EMR migration support, preservation, or request handling.</p>
       </div>
       <div className="mt-5 flex flex-col gap-3 sm:mt-0 sm:flex-row">
         <a href="#/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-semibold text-brand-900">
           Request a Consultation
         </a>
         <a href="#/request-records" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/30 px-4 py-3 text-sm font-semibold text-white">
-          Submit Request
+          Submit Records Request
         </a>
       </div>
     </div>
@@ -630,7 +730,7 @@ function ContactForm({ compact = false }) {
           <TextField label="Role" name="role" />
           <TextField label="Email" name="email" type="email" required />
           <TextField label="Phone" name="phone" type="tel" />
-          <SelectField label="Service interested in" name="service" options={["Records storage", "Scanning and OCR", "Request handling", "Data extraction", "EMR/EHR migration", "Practice closure support"]} />
+          <SelectField label="Service interested in" name="service" options={["Healthcare data management", "EMR/EHR migration support", "Medical records digitization", "OCR indexing", "Legacy system data extraction", "Practice transition support", "Records request handling", "Secure storage and preservation"]} />
           <div className="sm:col-span-2">
             <TextArea label="Message" name="message" rows={compact ? 4 : 6} required />
           </div>
@@ -770,7 +870,7 @@ function Footer() {
             <span className="text-lg font-semibold">CareVault</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-600">
-            Protecting Patient Records, Preserving Trust. Secure medical records management, scanning, indexing, data services, and request handling for healthcare providers.
+            Protecting Patient Records, Preserving Trust. Healthcare data management, EMR migration support, medical records digitization, OCR indexing, data extraction, practice transition support, and long-term records preservation.
           </p>
           <p className="mt-4 text-xs leading-5 text-slate-500">
             Privacy notice: use HTTPS, authenticated internal access, approved policies, and secure hosting before collecting production patient information.
@@ -780,9 +880,10 @@ function Footer() {
           <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-900">Services</h3>
           <ul className="mt-4 space-y-2 text-sm text-slate-600">
             <li>Records storage</li>
-            <li>Scanning and OCR</li>
+            <li>EMR migration support</li>
+            <li>Scanning, OCR, and indexing</li>
+            <li>Legacy data extraction</li>
             <li>Request handling</li>
-            <li>Migration support</li>
           </ul>
         </div>
         <div>
