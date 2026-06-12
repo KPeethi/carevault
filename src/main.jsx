@@ -130,7 +130,7 @@ const audiences = [
 const securityItems = [
   "Privacy-first workflows",
   "Compliance-focused processes",
-  "HIPAA-aware records handling",
+  "Privacy-aware records handling",
   "Secure access controls",
   "Authorization-based release",
   "Identity and consent verification",
@@ -422,7 +422,7 @@ function WhoWeHelpPage() {
 
 function SecurityPage() {
   return (
-    <PageShell eyebrow="Compliance & Security" title="Privacy-first workflows for healthcare records and data" text="CareVault uses careful, compliance-focused processes for confidential records, data exports, request handling, and preservation workflows. We do not claim legal certification, HIPAA certification, or DPDP certification.">
+    <PageShell eyebrow="Compliance & Security" title="Privacy-first workflows for healthcare records and data" text="CareVault uses careful, compliance-focused processes for confidential records, data exports, request handling, and preservation workflows. We do not claim legal certification or privacy-law certification.">
       <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr]">
         <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex items-center gap-3">
